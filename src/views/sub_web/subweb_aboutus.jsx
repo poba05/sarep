@@ -1,6 +1,6 @@
 export default function SubwebAboutus(){
     return(
-        <section className="about-us py-16 bg-gray-100 animate-fade-in">
+        <section className="about-us pt-28 pb-16 bg-gray-100 animate-fade-in">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-12 animate-slide-up">
                     <h1 className="text-4xl font-bold text-gray-800 mb-4">About Us</h1>
@@ -13,7 +13,7 @@ export default function SubwebAboutus(){
                     <div>
                         <h2 className="text-3xl font-semibold text-gray-800 mb-6">Our Story</h2>
                         <p className="text-gray-600 mb-4">
-                            Founded in 2020, SAREP has been at the forefront of revolutionizing the real estate,
+                            Founded in 2022, SAREP has been at the forefront of revolutionizing the real estate,
                             automotive, and hospitality industries in Nigeria. We started with a simple idea:
                             to make premium services accessible and beneficial for everyone.
                         </p>
@@ -50,15 +50,15 @@ export default function SubwebAboutus(){
                             </div>
                         </div>
                         <div className="md:w-2/3 md:pl-8">
-                            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Adebayo Ogunleye</h3>
+                            <h3 className="text-2xl font-semibold text-gray-800 mb-2">Ayodele Oluwaseun</h3>
                             <p className="text-yellow-500 font-semibold mb-4">Chief Executive Officer & Founder</p>
                             <p className="text-gray-600 mb-4">
-                                With over 15 years of experience in the luxury services industry, Adebayo founded SAREP
+                                With over 5 years of experience in the luxury services industry, Oluwaseun founded SAREP
                                 with a vision to transform how Nigerians access premium real estate, transportation, and accommodations.
                             </p>
                             <p className="text-gray-600 mb-4">
-                                A graduate of Harvard Business School with a background in real estate development and
-                                hospitality management, Adebayo brings unparalleled expertise and passion to every aspect of our operations.
+                                A graduate of Lagos Business School with a background in real estate development and
+                                hospitality management, Oluwaseun brings unparalleled expertise and passion to every aspect of our operations.
                             </p>
                             <p className="text-gray-600">
                                 "At SAREP, we don't just provide services – we create experiences that last a lifetime.

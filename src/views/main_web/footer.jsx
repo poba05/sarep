@@ -5,7 +5,7 @@ export default function Footer() {
     return(
         <div className="bg-gray-900 py-24 pt-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-4 space-y-8 md:space-y-0 gap-8 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     <div className="col-span-1">
                         <div className="flex flex-row">
                             <div className="bg-yellow-500 h-12 w-12 rounded-lg text-gray-900 flex items-center justify-center ">
@@ -34,9 +34,9 @@ export default function Footer() {
                     <div className="col-span-1">
                         <h3 className="text-white font-bold mb-2">contact</h3>
                         <ul className="space-y-1">
-                            <li><span className="text-slate-400"><FontAwesomeIcon icon={faEnvelope} className="text-yellow-500" /> info@sarep.com</span></li>
-                            <li><span className="text-slate-400"><FontAwesomeIcon icon={faPhone} className="text-yellow-500" /> +1 (555) 123 4567</span></li>
-                            <li><span className="text-slate-400"><FontAwesomeIcon icon={faMapMarkerAlt} className="text-yellow-500" /> 123 Main Street, City, Country</span></li>
+                            <li><span className="text-slate-400"><FontAwesomeIcon icon={faEnvelope} className="text-yellow-500" /> sarepnigeria@gmail.com</span></li>
+                            <li><span className="text-slate-400"><FontAwesomeIcon icon={faPhone} className="text-yellow-500" /> +234 906 015 1108</span></li>
+                            <li><span className="text-slate-400"><FontAwesomeIcon icon={faMapMarkerAlt} className="text-yellow-500" /> </span></li>
                         </ul>
                     </div>
 

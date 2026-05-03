@@ -6,6 +6,8 @@ import SubwebServices from './views/sub_web/subweb_services'
 import Navbar from './views/main_web/navbar'
 import Footer from './views/main_web/footer'
 import SubwebAboutus from './views/sub_web/subweb_aboutus'
+import AdminPage from './views/admin/AdminPage'
+import ListingDetails from './views/sub_web/ListingDetails'
 
 function App() {
   return (
@@ -16,9 +18,11 @@ function App() {
           <Routes>
             <Route path="/" element={<MainWeb />} />
             <Route path="/subweb_listings" element={<SubwebListings />} />
+            <Route path="/subweb_listings/:id" element={<ListingDetails />} />
             <Route path="/subweb_contactus" element={<SubwebContactUs />} />
             <Route path='/subweb_services' element={<SubwebServices />} />
             <Route path='/subweb_aboutus' element={<SubwebAboutus />} />
+            <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </div>
         <Footer />
