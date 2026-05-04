@@ -1,6 +1,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRight, faBuilding, faCar, faCarRear, faCarSide, faCheck, faCity, faDiamond, faGem, faHome, faHouse } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBuilding, faCar, faCheck, faCity, faGem, faHouse, faCarSide } from "@fortawesome/free-solid-svg-icons"
 import { faMap } from "@fortawesome/free-regular-svg-icons"
+
+// Import assets
+import livingRoomImg from "../../assets/living_room.jpg"
+import balconyImg from "../../assets/balcony.jpg"
+import kitchenImg from "../../assets/kitchen.jpg"
+import bedroomImg from "../../assets/bedroom.jpg"
+import car1Img from "../../assets/car_1.jpg"
+import car2Img from "../../assets/car_2.jpg"
+import car4Img from "../../assets/car_4.jpg"
+import heroImg from "../../assets/hero_image.jpg"
+import realEstate1Img from "../../assets/real_estate_1.jpg"
+import realEstate2Img from "../../assets/real_estate_2.jpg"
 
 export default function SubwebServices() {
     const list = [
@@ -36,8 +48,8 @@ export default function SubwebServices() {
         <section className="relative pt-20 animate-fade-in">
             <div className="w-full px-4 py-12 bg-gray-900 text-center animate-slide-up">
                 <div className="max-w-7xl mx-auto">
-                    <h1 className="text-white font-serif font-bold text-6xl mb-4">Our Services</h1>
-                    <p className="text-white">Comprehensive solutions for luxury living, premium accommodations, and exclusive vehicle experiences tailored to your lifestyle.</p>
+                    <h1 className="text-white font-serif font-bold text-4xl md:text-6xl mb-4">Our Services</h1>
+                    <p className="text-white text-sm md:text-base">Comprehensive solutions for luxury living, premium accommodations, and exclusive vehicle experiences tailored to your lifestyle.</p>
                 </div>
             </div>
             <div className="bg-white py-20 animate-slide-up-delay">
@@ -62,56 +74,50 @@ export default function SubwebServices() {
             {/* Airbnb Rentals Section */}
             <div className="w-full bg-gray-100 py-20 animate-slide-up-delay-2">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div>
                             <h4 className="text-yellow-500 text-2xl font-serif">Premium Accommodations</h4>
-                            <h1 className="text-gray-800 font-serif font-bold text-4xl mt-2">Airbnb & Short-Term Rentals</h1>
+                            <h1 className="text-gray-800 font-serif font-bold text-3xl md:text-4xl mt-2">Airbnb & Short-Term Rentals</h1>
                             <p className="text-gray-600 mt-4">Experience luxury living with our carefully curated collection of premium apartments and homes. Each property is meticulously maintained and equipped with modern amenities to ensure your comfort and satisfaction.</p>
                             <div className="flex flex-col">
-                                <div>
-                                    <div className="flex items-center mt-5">
-                                        <div className="h-11 w-11 rounded-full bg-yellow-500/25 items-center justify-center flex mb-4">
-                                            <FontAwesomeIcon icon={faCheck} className="text-yellow-500 text-2xl"/>
-                                        </div>
-                                        <div className="flex flex-col space-x-2 ml-6">
-                                            <span className="text-gray-800 font-bold text-xl">Fully Furnished Apartments</span>
-                                            <p className="text-gray-600">Modern furniture, high-speed WiFi, smart TVs, and premium bedding.</p>
-                                        </div>
+                                <div className="flex items-start mt-6">
+                                    <div className="h-10 w-10 shrink-0 rounded-full bg-yellow-500/20 flex items-center justify-center mr-4">
+                                        <FontAwesomeIcon icon={faCheck} className="text-yellow-500"/>
+                                    </div>
+                                    <div>
+                                        <span className="text-gray-800 font-bold text-lg block">Fully Furnished Apartments</span>
+                                        <p className="text-gray-600 text-sm">Modern furniture, high-speed WiFi, smart TVs, and premium bedding.</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="flex items-center mt-5">
-                                        <div className="h-11 w-11 rounded-full bg-yellow-500/25 items-center justify-center flex mb-4">
-                                            <FontAwesomeIcon icon={faCheck} className="text-yellow-500 text-2xl"/>
-                                        </div>
-                                        <div className="flex flex-col space-x-2 ml-6">
-                                            <span className="text-gray-800 font-bold text-xl">Fully Furnished Apartments</span>
-                                            <p className="text-gray-600">Modern furniture, high-speed WiFi, smart TVs, and premium bedding.</p>
-                                        </div>
+                                <div className="flex items-start mt-6">
+                                    <div className="h-10 w-10 shrink-0 rounded-full bg-yellow-500/20 flex items-center justify-center mr-4">
+                                        <FontAwesomeIcon icon={faCheck} className="text-yellow-500"/>
+                                    </div>
+                                    <div>
+                                        <span className="text-gray-800 font-bold text-lg block">Prime Locations</span>
+                                        <p className="text-gray-600 text-sm">Stay in the heart of Victoria Island, Ikoyi, and other high-end districts.</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="flex items-center mt-5">
-                                        <div className="h-11 w-11 rounded-full bg-yellow-500/25 items-center justify-center flex mb-4">
-                                            <FontAwesomeIcon icon={faCheck} className="text-yellow-500 text-2xl"/>
-                                        </div>
-                                        <div className="flex flex-col space-x-2 ml-6">
-                                            <span className="text-gray-800 font-bold text-xl">Fully Furnished Apartments</span>
-                                            <p className="text-gray-600">Modern furniture, high-speed WiFi, smart TVs, and premium bedding.</p>
-                                        </div>
+                                <div className="flex items-start mt-6">
+                                    <div className="h-10 w-10 shrink-0 rounded-full bg-yellow-500/20 flex items-center justify-center mr-4">
+                                        <FontAwesomeIcon icon={faCheck} className="text-yellow-500"/>
+                                    </div>
+                                    <div>
+                                        <span className="text-gray-800 font-bold text-lg block">24/7 Security & Support</span>
+                                        <p className="text-gray-600 text-sm">Your safety is our priority with round-the-clock security and concierge.</p>
                                     </div>
                                 </div>
                             </div>
-                            <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-5 rounded mt-8 ml-25">View Available Apartments</button>
+                            <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-lg mt-10 transition-colors">View Available Apartments</button>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-4">
-                                <img src="src/assets/living_room.jpg" alt="Living room" className="w-full h-48 object-cover rounded-lg shadow-lg"/>
-                                <img src="src/assets/balcony.jpg" alt="Balcony" className="w-full h-48 object-cover rounded-lg shadow-lg"/>
+                                <img src={livingRoomImg} alt="Living room" className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"/>
+                                <img src={balconyImg} alt="Balcony" className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"/>
                             </div>
                             <div className="space-y-4 pt-8">
-                                <img src="src/assets/kitchen.jpg" alt="Kitchen" className="w-full h-48 object-cover rounded-lg shadow-lg"/>
-                                <img src="src/assets/bedroom.jpg" alt="Bedroom" className="w-full h-48 object-cover rounded-lg shadow-lg"/>
+                                <img src={kitchenImg} alt="Kitchen" className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"/>
+                                <img src={bedroomImg} alt="Bedroom" className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"/>
                             </div>
                         </div>
                     </div>
@@ -120,39 +126,35 @@ export default function SubwebServices() {
             {/* Car Rentals Section */}
             <div className="w-full bg-white py-20 animate-slide-up-delay-3">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        <div className="order-2 sm:order-1">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div className="order-2 md:order-1">
                             <div className="flex flex-col gap-4">
                                 <div className="flex flex-row gap-4 w-full">
-                                    <img src="src/assets/car_1.jpg" alt="car-1" className="w-1/2 h-55 object-cover rounded-lg shadow-lg"/>
-                                    <img src="src/assets/car_2.jpg" alt="car-2" className="w-1/2 h-55 object-cover rounded-lg shadow-lg"/>
+                                    <img src={car1Img} alt="car-1" className="w-1/2 h-48 md:h-56 object-cover rounded-lg shadow-lg"/>
+                                    <img src={car2Img} alt="car-2" className="w-1/2 h-48 md:h-56 object-cover rounded-lg shadow-lg"/>
                                 </div>
-                                <div className="w-full text-center flex justify-center">
-                                    <img src="src/assets/car_4.jpg" alt="car-4" className="w-full h-70 object-cover object-center rounded-lg shadow-lg"/>
+                                <div className="w-full">
+                                    <img src={car4Img} alt="car-4" className="w-full h-64 md:h-80 object-cover object-center rounded-lg shadow-lg"/>
                                 </div>
                             </div>
                         </div>
-                        <div className="order-1 sm:order-2">
-                            <h4 className="text-yellow-500 text-2xl font-serif mt-10">Luxury Fleet</h4>
-                            <h1 className="text-gray-800 font-serif font-bold text-4xl mt-8">Premium Car Rentals</h1>
-                            <p className="text-gray-600 mt-8">Drive in style with our exclusive collection of luxury and exotic vehicles. Whether for business meetings, special events, or leisure travel, we have the perfect vehicle for every occasion.</p>
-                            <div className="flex flex-col">
-                                <div>
-                                    <div className="flex items-center mt-5 space-x-6">
-                                        <div className="w-65 h-38 p-4 bg-gray-200/30 rounded-lg items-start justify-start flex flex-col mb-4">
-                                            <FontAwesomeIcon icon={faCarSide} className="text-yellow-500 text-2xl mb-5 mt-2"/>
-                                            <span className="text-gray-800 font-bold text-xl">Sedan & SUVs</span>
-                                            <p className="text-gray-600">Mercedes, BMW, RangeRover</p>
-                                        </div>
-                                        <div className="w-65 h-38 p-4 bg-gray-200/30 rounded-lg items-start justify-start flex flex-col mb-4">
-                                            <FontAwesomeIcon icon={faGem} className="text-yellow-500 text-2xl mb-5 mt-2"/>
-                                            <span className="text-gray-800 font-bold text-xl">Exotic Cars</span>
-                                            <p className="text-gray-600">Ferrari, Lamborghini, Porsche</p>
-                                        </div>
-                                    </div>
+                        <div className="order-1 md:order-2">
+                            <h4 className="text-yellow-500 text-2xl font-serif">Luxury Fleet</h4>
+                            <h1 className="text-gray-800 font-serif font-bold text-3xl md:text-4xl mt-2">Premium Car Rentals</h1>
+                            <p className="text-gray-600 mt-6">Drive in style with our exclusive collection of luxury and exotic vehicles. Whether for business meetings, special events, or leisure travel, we have the perfect vehicle for every occasion.</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100 flex flex-col">
+                                    <FontAwesomeIcon icon={faCarSide} className="text-yellow-500 text-2xl mb-4"/>
+                                    <span className="text-gray-800 font-bold text-lg">Sedans & SUVs</span>
+                                    <p className="text-gray-600 text-sm mt-1">Mercedes, BMW, Range Rover</p>
+                                </div>
+                                <div className="p-6 bg-gray-50 rounded-xl border border-gray-100 flex flex-col">
+                                    <FontAwesomeIcon icon={faGem} className="text-yellow-500 text-2xl mb-4"/>
+                                    <span className="text-gray-800 font-bold text-xl">Exotic Cars</span>
+                                    <p className="text-gray-600 text-sm mt-1">Ferrari, Lamborghini, Porsche</p>
                                 </div>
                             </div>
-                            <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-5 rounded mt-3">View Our Fleet</button>
+                            <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-lg mt-8 transition-colors">View Our Fleet</button>
                         </div>
                     </div>
                 </div>
@@ -160,37 +162,43 @@ export default function SubwebServices() {
             {/* Real Estate Section */}
             <div className="w-full bg-gray-100 py-20 animate-slide-up-delay-4">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div>
                             <h4 className="text-yellow-500 text-2xl font-serif">Property Investment</h4>
                             <h1 className="text-gray-800 font-serif font-bold text-3xl mt-2">Real Estate Sales & Development</h1>
-                            <p className="text-gray-600 mt-4 mb-6">Invest in Nigeria's most promising real estate opportunities. From residential plots to commercial estates, we offer prime properties with verified documentation and excellent ROI potential.</p>
-                            <div className="bg-white p-6 rounded-lg shadow-md mb-3">
-                                <h4 className="font-bold text-gray-800 mb-4">Property Types Available</h4>
-                                <div className="space-y-3">
-                                    <div className="flex items-center gap-3">
-                                        <FontAwesomeIcon icon={faMap} className="text-yellow-500 text-xl"/>
-                                        <span className="text-gray-600">Residential Land & Plots</span>
+                            <p className="text-gray-600 mt-4 mb-8">Invest in Nigeria's most promising real estate opportunities. From residential plots to commercial estates, we offer prime properties with verified documentation and excellent ROI potential.</p>
+                            <div className="bg-white p-6 rounded-xl shadow-md mb-8">
+                                <h4 className="font-bold text-gray-800 mb-6 border-b pb-4">Property Types Available</h4>
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faMap} className="text-yellow-500"/>
+                                        </div>
+                                        <span className="text-gray-700 font-medium">Residential Land & Plots</span>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <FontAwesomeIcon icon={faCity} className="text-yellow-500 text-xl"/>
-                                        <span className="text-gray-600">Commercial Properties</span>
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faCity} className="text-yellow-500"/>
+                                        </div>
+                                        <span className="text-gray-700 font-medium">Commercial Properties</span>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <FontAwesomeIcon icon={faHome} className="text-yellow-500 text-xl"/>
-                                        <span className="text-gray-600">Luxury Estates & Villas</span>
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center">
+                                            <FontAwesomeIcon icon={faHouse} className="text-yellow-500"/>
+                                        </div>
+                                        <span className="text-gray-700 font-medium">Luxury Estates & Villas</span>
                                     </div>
                                 </div>
                             </div>
-                            <button className="bg-gray-800 hover:border-2 hover:border-white text-white font-bold py-4 px-5 rounded mt-8">Browse Properties</button>
+                            <button className="bg-gray-800 hover:bg-black text-white font-bold py-4 px-8 rounded-lg transition-colors">Browse Properties</button>
                         </div>
                         <div className="flex flex-col gap-4">
-                                <div className="w-full text-center flex justify-center">
-                                    <img src="src/assets/hero_image.jpg" alt="real-estate" className="w-full h-70 object-cover object-center rounded-lg shadow-lg"/>
+                                <div className="w-full">
+                                    <img src={heroImg} alt="real-estate" className="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg"/>
                                 </div>
-                                <div className="flex flex-row gap-4 w-full">
-                                    <img src="src/assets/real_estate_1.jpg" alt="real-estate-1" className="w-1/2 h-55 object-cover rounded-lg shadow-lg"/>
-                                    <img src="src/assets/real_estate_2.jpg" alt="real-estate-2" className="w-1/2 h-55 object-cover rounded-lg shadow-lg"/>
+                                <div className="grid grid-cols-2 gap-4">
+                                    <img src={realEstate1Img} alt="real-estate-1" className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"/>
+                                    <img src={realEstate2Img} alt="real-estate-2" className="w-full h-48 md:h-64 object-cover rounded-lg shadow-lg"/>
                                 </div>
                         </div>
                     </div>
