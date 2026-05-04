@@ -26,8 +26,8 @@ export default function Mlistings() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center justify-center text-center space-y-4 mb-12 animate-slide-up">
                     <span className="text-xl text-yellow-500 font-medium font-serif">Premium selection</span>
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mt-4">Featured Listings</h2>
-                    <p className="font-serif text-black text-lg font-light max-w-3xl mx-auto">Discover our handpicked collection of premium properties, luxury vehicles, and exclusive accommodations.</p>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mt-4 px-2">Featured Listings</h2>
+                    <p className="font-serif text-black text-base md:text-lg font-light max-w-3xl mx-auto px-4">Discover our handpicked collection of premium properties, luxury vehicles, and exclusive accommodations.</p>
                 </div>
 
                 {loading ? (

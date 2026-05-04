@@ -12,9 +12,9 @@ export default function Hero() {
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 space-y-4 animate-slide-up">
                 <h1 className="text-4xl md:text-7xl font-black font-serif text-white mb-4">Welcome to SAREP</h1>
                 <p className="text-lg md:text-2xl mb-8 text-slate-200 max-w-3xl mx-auto">Your gateway to luxury real estate, premium car rentals, and exclusive short-term accommodations in Nigeria's finest locations.</p>
-                <div className="flex flex-row space-x-5 animate-slide-up-delay">
-                    <button className="bg-yellow-500 text-black font-semibold px-6 py-3 rounded-md hover:bg-yellow-600 transition duration-300">Explore Listings</button>
-                    <button className="bg-transparent border-2 border-white text-white font-semibold px-6 py-3 rounded-md hover:bg-white hover:text-black transition duration-300">Contact Us</button>
+                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-5 animate-slide-up-delay">
+                    <button className="bg-yellow-500 text-black font-semibold px-8 py-3 rounded-md hover:bg-yellow-600 transition duration-300 w-full sm:w-auto">Explore Listings</button>
+                    <button className="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-md hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto">Contact Us</button>
                 </div>
                 <div className="absolute bottom-10 animate-bounce animate-slide-up-delay-2">
                     <FontAwesomeIcon icon={faAngleDown} className="text-white text-3xl"/>

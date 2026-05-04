@@ -3,16 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function MainWebAbout() {
     return (
-        <div className="bg-gray-900 py-24 h-130 animate-fade-in">
+        <div className="bg-gray-900 py-24 min-h-fit animate-fade-in">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col items-center justify-center text-center space-y-4 mb-12 animate-slide-up">
-                    <h2 className="text-4xl md:text-5xl font-serif font-black text-white mt-4">Why Choose SAREP?</h2>
-                    <p className="text-lg md:text-xl text-slate-50 max-w-3xl">
+                    <h2 className="text-3xl md:text-5xl font-serif font-black text-white mt-4 px-2">Why Choose SAREP?</h2>
+                    <p className="text-base md:text-xl text-slate-50 max-w-3xl px-4">
                         We deliver excellence across all our services with unmatched professionalism and attention to detail.
                     </p>
                 </div>
                 {/* Features Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 animate-slide-up-delay">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 animate-slide-up-delay">
                     {/* Feature 1 */}
                     <div className="p-6 flex flex-col items-center text-center">
                         <div className="bg-yellow-500/20 rounded-full w-20 h-20 flex items-center justify-center mb-4">
