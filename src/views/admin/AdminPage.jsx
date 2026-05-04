@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { addListing, getListings, updateListing, deleteListing, uploadImage } from '../../utils/listingsData';
+import { addListing, getListings, updateListing, deleteListing, uploadMultipleImages } from '../../utils/listingsData';
 
 export default function AdminPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -7,14 +7,15 @@ export default function AdminPage() {
     const [error, setError] = useState('');
     const [listings, setListings] = useState([]);
     const [editingId, setEditingId] = useState(null);
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [imagePreview, setImagePreview] = useState(null);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+    const [imagePreviews, setImagePreviews] = useState([]);
     const [isUploading, setIsUploading] = useState(false);
     
     const [formData, setFormData] = useState({
         title: '',
         category: 'airbnb',
         image: '',
+        gallery: [],
         location: '',
         price: '',
         priceUnit: '',
@@ -38,7 +39,6 @@ export default function AdminPage() {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Simple password protection for demonstration
         if (password === 'admin123') {
             setIsAuthenticated(true);
             setError('');
@@ -53,17 +53,22 @@ export default function AdminPage() {
     };
 
     const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setSelectedFile(file);
-            setImagePreview(URL.createObjectURL(file));
+        const files = Array.from(e.target.files);
+        if (files.length > 0) {
+            setSelectedFiles(prev => [...prev, ...files]);
+            const newPreviews = files.map(file => URL.createObjectURL(file));
+            setImagePreviews(prev => [...prev, ...newPreviews]);
         }
+    };
+
+    const removePreview = (index) => {
+        setSelectedFiles(prev => prev.filter((_, i) => i !== index));
+        setImagePreviews(prev => prev.filter((_, i) => i !== index));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Map category to default icons for simplicity
         const getIconForCategory = (cat, index) => {
             if (cat === 'airbnb') return ['faBed', 'faBathtub', 'faWifi'][index];
             if (cat === 'cars') return ['faUsers', 'faGear', 'faGasPump'][index];
@@ -77,20 +82,21 @@ export default function AdminPage() {
         if (formData.feature3) features.push({ iconName: getIconForCategory(formData.category, 2), label: formData.feature3 });
 
         setIsUploading(true);
-        let imageUrl = formData.image;
+        let galleryUrls = [...(formData.gallery || [])];
 
-        // Upload new image if selected
-        if (selectedFile) {
-            const uploadedUrl = await uploadImage(selectedFile);
-            if (uploadedUrl) {
-                imageUrl = uploadedUrl;
-            }
+        // Upload new images if selected
+        if (selectedFiles.length > 0) {
+            const newUrls = await uploadMultipleImages(selectedFiles);
+            galleryUrls = [...galleryUrls, ...newUrls];
         }
+
+        const primaryImage = galleryUrls.length > 0 ? galleryUrls[0] : (formData.image || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
 
         const newListing = {
             title: formData.title,
             category: formData.category,
-            image: imageUrl || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: primaryImage,
+            gallery: galleryUrls,
             location: formData.location,
             price: formData.price,
             priceUnit: formData.priceUnit,
@@ -115,6 +121,7 @@ export default function AdminPage() {
             title: '',
             category: 'airbnb',
             image: '',
+            gallery: [],
             location: '',
             price: '',
             priceUnit: '',
@@ -123,8 +130,8 @@ export default function AdminPage() {
             feature2: '',
             feature3: ''
         });
-        setSelectedFile(null);
-        setImagePreview(null);
+        setSelectedFiles([]);
+        setImagePreviews([]);
         setIsUploading(false);
         
         setTimeout(() => setSuccessMessage(''), 3000);
@@ -136,6 +143,7 @@ export default function AdminPage() {
             title: listing.title,
             category: listing.category,
             image: listing.image,
+            gallery: listing.gallery || [listing.image],
             location: listing.location,
             price: listing.price,
             priceUnit: listing.priceUnit,
@@ -144,8 +152,8 @@ export default function AdminPage() {
             feature2: listing.features && listing.features[1] ? listing.features[1].label : '',
             feature3: listing.features && listing.features[2] ? listing.features[2].label : ''
         });
-        setImagePreview(listing.image);
-        setSelectedFile(null);
+        setImagePreviews(listing.gallery || [listing.image]);
+        setSelectedFiles([]);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
@@ -248,33 +256,29 @@ export default function AdminPage() {
                                     </div>
                                 </div>
 
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700">Listing Image</label>
-                                    <div className="mt-1 flex flex-col items-center space-y-4">
-                                        {imagePreview && (
-                                            <div className="relative w-full h-48 rounded-lg overflow-hidden border border-gray-200">
-                                                <img src={imagePreview} alt="Preview" className="w-full h-full object-cover" />
+                                <div className="sm:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Gallery (Upload one or more photos)</label>
+                                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
+                                        {imagePreviews.map((preview, index) => (
+                                            <div key={index} className="relative h-32 rounded-lg overflow-hidden border border-gray-200">
+                                                <img src={preview} alt={`Preview ${index}`} className="w-full h-full object-cover" />
                                                 <button 
                                                     type="button"
-                                                    onClick={() => {
-                                                        setSelectedFile(null);
-                                                        setImagePreview(null);
-                                                        setFormData(prev => ({ ...prev, image: '' }));
-                                                    }}
-                                                    className="absolute top-2 right-2 bg-red-600 text-white p-1 rounded-full hover:bg-red-700"
+                                                    onClick={() => removePreview(index)}
+                                                    className="absolute top-1 right-1 bg-red-600 text-white p-1 rounded-full hover:bg-red-700 shadow-sm"
                                                 >
-                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
                                                         <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                                                     </svg>
                                                 </button>
                                             </div>
-                                        )}
-                                        <label className="w-full flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-500 hover:text-white transition-all duration-300">
-                                            <svg className="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path d="M16.88 9.1L4.1 4.1a.5.5 0 00-.7.4V15a.5.5 0 00.5.5h12a.5.5 0 00.5-.5V9.6a.5.5 0 00-.5-.5zM5 14V6.5l9.5 3.7L5 14z" />
+                                        ))}
+                                        <label className="flex flex-col items-center justify-center h-32 bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+                                            <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                             </svg>
-                                            <span className="mt-2 text-base leading-normal">Select a photo</span>
-                                            <input type='file' className="hidden" accept="image/*" onChange={handleFileChange} />
+                                            <span className="mt-2 text-xs text-gray-500">Add Photo</span>
+                                            <input type='file' className="hidden" accept="image/*" multiple onChange={handleFileChange} />
                                         </label>
                                     </div>
                                 </div>
@@ -325,11 +329,11 @@ export default function AdminPage() {
                                             onClick={() => {
                                                 setEditingId(null);
                                                 setFormData({
-                                                    title: '', category: 'airbnb', image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+                                                    title: '', category: 'airbnb', image: '', gallery: [],
                                                     location: '', price: '', priceUnit: '', description: '', feature1: '', feature2: '', feature3: ''
                                                 });
-                                                setSelectedFile(null);
-                                                setImagePreview(null);
+                                                setSelectedFiles([]);
+                                                setImagePreviews([]);
                                             }}
                                             className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-3"
                                         >

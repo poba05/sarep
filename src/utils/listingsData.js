@@ -151,3 +151,21 @@ export const uploadImage = async (file) => {
 
     return publicUrl;
 };
+
+export const uploadMultipleImages = async (files) => {
+    if (!files || files.length === 0) return [];
+    
+    const uploadPromises = Array.from(files).map(file => uploadImage(file));
+    const urls = await Promise.all(uploadPromises);
+    return urls.filter(url => url !== null);
+};
+
+export const getRandomListings = async (count = 3) => {
+    const listings = await getListings();
+    if (!listings || listings.length === 0) return [];
+    
+    // Shuffle and pick count
+    return [...listings]
+        .sort(() => 0.5 - Math.random())
+        .slice(0, count);
+};
