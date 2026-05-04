@@ -1,5 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight, faBuilding, faCar, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faBuilding, faCar, faHome } from "@fortawesome/free-solid-svg-icons";
+import airbnbImg from "../../assets/airbnb.jpg";
+import carImg from "../../assets/car_image.jpg";
+import heroImg from "../../assets/hero_image.jpg";
 
 export default function Mservices() {
     return(
@@ -13,7 +16,7 @@ export default function Mservices() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-up-delay">
                     <div className="service-card bg-slate-50 rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div className="h-64 overflow-hidden">
-                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="src/assets/airbnb.jpg" alt="" />
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={airbnbImg} alt="" />
                         </div>
                         <div className="p-8">
                             <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center overflow-hidden">
@@ -29,7 +32,7 @@ export default function Mservices() {
                     </div>
                     <div className="service-card bg-slate-50 rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div className="h-64 overflow-hidden">
-                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="src/assets/car_image.jpg" alt="" />
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={carImg} alt="" />
                         </div>
                         <div className="p-8">
                             <div className="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center overflow-hidden">
@@ -45,7 +48,7 @@ export default function Mservices() {
                     </div>
                     <div className="service-card bg-slate-50 rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div className="h-64 overflow-hidden">
-                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="src/assets/hero_image.jpg" alt="" />
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={heroImg} alt="" />
                         </div>
                         <div className="p-8">
                             <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center overflow-hidden">

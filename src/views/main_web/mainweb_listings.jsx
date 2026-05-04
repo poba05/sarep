@@ -4,6 +4,9 @@ import { faLocationPin } from "@fortawesome/free-solid-svg-icons/faLocationPin";
 import { faRuler } from "@fortawesome/free-solid-svg-icons/faRuler";
 import { faRoad } from "@fortawesome/free-solid-svg-icons/faRoad";
 import { useNavigate } from "react-router-dom";
+import airbnbImg from "../../assets/airbnb.jpg";
+import carImg from "../../assets/car_image.jpg";
+import heroImg from "../../assets/hero_image.jpg";
 
 export default function Mlistings() {
     const navigate = useNavigate();
@@ -15,13 +18,12 @@ export default function Mlistings() {
                     <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mt-4">Featured Listings</h2>
                     <p className="font-serif text-black text-lg font-light max-w-3xl mx-auto">Discover our handpicked collection of premium properties, luxury vehicles, and exclusive accommodations.</p>
                 </div>
-                {/* Listings content can be added here */}
+                {/* Listings content */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-up-delay">
-                    {/* Example listing card */}
                     {/* first listing card */}
                     <div className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div className="h-64 overflow-hidden">
-                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="src/assets/airbnb.jpg" alt="" />
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={airbnbImg} alt="" />
                         </div>
                         <div className="p-8">
                             <h3 className="text-xl text-black font-serif font-bold mt-4">Luxury 3BR Apartment</h3>
@@ -47,7 +49,7 @@ export default function Mlistings() {
                                     <span className="text-gray-600 font-serif">Wifi</span>
                                 </div>
                             </div>
-                            <button className="mt-6 w-full bg-yellow-500 text-white font-serif font-medium py-3 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300">
+                            <button onClick={() => navigate("/subweb_listings")} className="mt-6 w-full bg-yellow-500 text-white font-serif font-medium py-3 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300">
                                 <span>View Details</span>
                             </button>
                         </div>
@@ -55,7 +57,7 @@ export default function Mlistings() {
                     {/* second listing card */}
                     <div className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div className="h-64 overflow-hidden">
-                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="src/assets/car_image.jpg" alt="" />
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={carImg} alt="" />
                         </div>
                         <div className="p-8">
                             <h3 className="text-xl text-black font-serif font-bold mt-4">Mercedes-Benz S-Class</h3>
@@ -81,7 +83,7 @@ export default function Mlistings() {
                                     <span className="text-gray-600 font-serif">Petrol</span>
                                 </div>
                             </div>
-                            <button className="mt-6 w-full bg-yellow-500 text-white font-serif font-medium py-3 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300">
+                            <button onClick={() => navigate("/subweb_listings")} className="mt-6 w-full bg-yellow-500 text-white font-serif font-medium py-3 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300">
                                 <span>View Details</span>
                             </button>
                         </div>
@@ -89,7 +91,7 @@ export default function Mlistings() {
                     {/* third listing card */}
                     <div className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div className="h-64 overflow-hidden">
-                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="src/assets/hero_image.jpg" alt="" />
+                            <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={heroImg} alt="" />
                         </div>
                         <div className="p-8">
                             <h3 className="text-xl text-black font-serif font-bold mt-4">Prime Estate Land</h3>
@@ -115,12 +117,11 @@ export default function Mlistings() {
                                     <span className="text-gray-600 font-serif">Tarred</span>
                                 </div>
                             </div>
-                            <button className="mt-6 w-full bg-yellow-500 text-white font-serif font-medium py-3 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300">
+                            <button onClick={() => navigate("/subweb_listings")} className="mt-6 w-full bg-yellow-500 text-white font-serif font-medium py-3 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300">
                                 <span>View Details</span>
                             </button>
                         </div>
                     </div>
-                    {/* end of cards */}
                 </div>
                 <div className="flex justify-center mt-12 animate-slide-up-delay-2">
                     <button onClick={() => navigate("/subweb_listings")} className="bg-black text-white font-serif font-medium py-4 px-12 rounded-lg flex flex-row items-center justify-center space-x-2 hover:bg-yellow-600 transition-colors duration-300 text-lg">

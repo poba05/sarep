@@ -1,9 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import heroImg from "../../assets/hero_image.jpg";
 
 export default function Hero() {
     return (
-        <div className="relative bg-gray-100 h-screen bg-[url('src/assets/hero_image.jpg')] bg-cover bg-center flex items-center justify-center animate-fade-in">
+        <div 
+            className="relative bg-gray-100 h-screen bg-cover bg-center flex items-center justify-center animate-fade-in"
+            style={{ backgroundImage: `url(${heroImg})` }}
+        >
             <div className="absolute inset-0 bg-black opacity-60 z-0"></div>
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 space-y-4 animate-slide-up">
                 <h1 className="text-4xl md:text-7xl font-black font-serif text-white mb-4">Welcome to SAREP</h1>
