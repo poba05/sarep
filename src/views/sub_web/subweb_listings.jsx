@@ -75,7 +75,7 @@ export default function SubwebListings() {
         <div className="bg-white py-12">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredListings.map((listing) => (
+                    {filteredListings?.map((listing) => (
                         <div key={listing.id} className="bg-white rounded-lg overflow-hidden shadow-lg group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                             <div className="h-56 md:h-64 overflow-hidden">
                                 <img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src={listing.image} alt={listing.title} />
@@ -91,7 +91,7 @@ export default function SubwebListings() {
                                     <span className="text-gray-500 font-serif font-light text-xl">{listing.priceUnit}</span>
                                 </div>
                                 <div className="grid grid-cols-3 gap-1 mt-4">
-                                    {listing.features.map((feature, idx) => (
+                                    {listing.features?.map((feature, idx) => (
                                         <div key={idx} className="flex flex-row items-center space-x-2">
                                             {feature.iconName && iconMap[feature.iconName] && (
                                                 <FontAwesomeIcon icon={iconMap[feature.iconName]} className="text-gray-600 text-xs"/>
@@ -107,6 +107,11 @@ export default function SubwebListings() {
                         </div>
                     ))}
                 </div>
+                {(!filteredListings || filteredListings.length === 0) && (
+                    <div className="text-center py-12">
+                        <p className="text-gray-500 text-lg">No listings found. If you just added one, please refresh or check your database connection.</p>
+                    </div>
+                )}
             </div>
         </div>
 

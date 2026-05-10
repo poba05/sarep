@@ -123,7 +123,7 @@ export default function ListingDetails() {
                                     <span className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                                         {listing.category}
                                     </span>
-                                    <span className="text-gray-400 text-sm">ID: #{listing.id.slice(0, 8)}</span>
+                                    <span className="text-gray-400 text-sm">ID: #{listing.id?.toString().slice(0, 8)}</span>
                                 </div>
                                 <h1 className="text-3xl md:text-5xl font-serif font-bold text-gray-900">{listing.title}</h1>
                                 <div className="mt-4 flex items-center text-gray-600">

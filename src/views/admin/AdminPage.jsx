@@ -26,6 +26,14 @@ export default function AdminPage() {
     });
 
     const [successMessage, setSuccessMessage] = useState('');
+    const [adminError, setAdminError] = useState('');
+    const [isConfigMissing, setIsConfigMissing] = useState(false);
+
+    useEffect(() => {
+        if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) {
+            setIsConfigMissing(true);
+        }
+    }, []);
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -104,13 +112,26 @@ export default function AdminPage() {
             features
         };
 
+        setAdminError('');
         if (editingId) {
-            await updateListing(editingId, newListing);
-            setSuccessMessage('Listing updated successfully!');
-            setEditingId(null);
+            const result = await updateListing(editingId, newListing);
+            if (result) {
+                setSuccessMessage('Listing updated successfully!');
+                setEditingId(null);
+            } else {
+                setAdminError('Failed to update listing. Please check your Supabase connection and RLS policies.');
+                setIsUploading(false);
+                return;
+            }
         } else {
-            await addListing(newListing);
-            setSuccessMessage('Listing added successfully!');
+            const result = await addListing(newListing);
+            if (result) {
+                setSuccessMessage('Listing added successfully!');
+            } else {
+                setAdminError('Failed to add listing. Please check your Supabase connection and RLS policies.');
+                setIsUploading(false);
+                return;
+            }
         }
         
         const updatedListings = await getListings();
@@ -221,6 +242,17 @@ export default function AdminPage() {
                             {editingId ? 'Edit Listing' : 'Add New Listing'}
                         </h3>
                         
+                        {isConfigMissing && (
+                            <div className="mb-6 bg-red-50 border-l-4 border-red-400 p-4">
+                                <div className="flex">
+                                    <div className="ml-3">
+                                        <p className="text-sm text-red-700 font-bold">Supabase Configuration Missing!</p>
+                                        <p className="text-xs text-red-600 mt-1">If hosted on Netlify, please add VITE_SUPABASE_URL and VITE_SUPABASE_PUBLISHABLE_KEY to your site settings.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                        
                         {successMessage && (
                             <div className="mb-6 bg-green-50 border-l-4 border-green-400 p-4">
                                 <div className="flex">
@@ -231,6 +263,16 @@ export default function AdminPage() {
                                     </div>
                                     <div className="ml-3">
                                         <p className="text-sm text-green-700">{successMessage}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {adminError && (
+                            <div className="mb-6 bg-red-50 border-l-4 border-red-400 p-4">
+                                <div className="flex">
+                                    <div className="ml-3">
+                                        <p className="text-sm text-red-700">{adminError}</p>
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +440,21 @@ export default function AdminPage() {
                                 </tbody>
                             </table>
                             {listings.length === 0 && (
-                                <p className="text-gray-500 text-center py-4">No listings found.</p>
+                                <div className="text-center py-8">
+                                    <p className="text-gray-500 mb-4">No listings found in the database.</p>
+                                    <button 
+                                        onClick={async () => {
+                                            const { seedDatabase, getListings } = await import('../../utils/listingsData');
+                                            await seedDatabase();
+                                            const updated = await getListings();
+                                            setListings(updated || []);
+                                            setSuccessMessage('Database seeded with sample data!');
+                                        }}
+                                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-blue-700 bg-blue-100 hover:bg-blue-200"
+                                    >
+                                        Seed with Sample Data
+                                    </button>
+                                </div>
                             )}
                         </div>
                     </div>
