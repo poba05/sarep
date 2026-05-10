@@ -51,28 +51,32 @@ export const defaultListings = [
 ];
 
 export const getListings = async () => {
+    console.log('Fetching listings from Supabase...');
     const { data, error } = await supabase
         .from('listings')
         .select('*')
         .order('created_at', { ascending: false });
     
     if (error) {
-        console.error('Error fetching listings:', error);
+        console.error('Error fetching listings:', error.message);
         return [];
     }
+    console.log(`Successfully fetched ${data?.length || 0} listings`);
     return data;
 };
 
 export const addListing = async (newListing) => {
+    console.log('Attempting to add new listing to Supabase:', newListing);
     const { data, error } = await supabase
         .from('listings')
         .insert([newListing])
         .select();
     
     if (error) {
-        console.error('Error adding listing:', error);
+        console.error('Error adding listing:', error.message);
         return null;
     }
+    console.log('Listing added successfully:', data[0]);
     return data[0];
 };
 
