@@ -134,7 +134,9 @@ export default function ListingDetails() {
                             <div className="text-right bg-slate-50 p-8 rounded-2xl border border-gray-100 shadow-sm w-full md:w-auto">
                                 <p className="text-sm text-gray-500 uppercase tracking-wider font-semibold mb-1">Total Price</p>
                                 <div className="flex items-baseline gap-2">
-                                    <span className="text-4xl md:text-5xl font-serif font-bold text-gray-900">{listing.price}</span>
+                                    <span className="text-4xl md:text-5xl font-serif font-bold text-gray-900">
+                                        {listing.price?.startsWith('₦') ? listing.price : `₦${listing.price}`}
+                                    </span>
                                     <span className="text-xl text-gray-500 font-serif">{listing.price_unit}</span>
                                 </div>
                             </div>
@@ -168,10 +170,11 @@ export default function ListingDetails() {
                                     <button 
                                         onClick={() => {
                                             const phoneNumber = "2349060151108";
+                                            const displayPrice = listing.price?.startsWith('₦') ? listing.price : `₦${listing.price}`;
                                             const message = `Hello, I'm interested in this listing:\n\n` +
                                                 `*Item:* ${listing.title}\n` +
                                                 `*Category:* ${listing.category}\n` +
-                                                `*Price:* ${listing.price}${listing.price_unit}\n` +
+                                                `*Price:* ${displayPrice}${listing.price_unit}\n` +
                                                 `*Location:* ${listing.location}\n\n` +
                                                 `*Image:* ${listing.image}\n\n` +
                                                 `Is this still available?`;
