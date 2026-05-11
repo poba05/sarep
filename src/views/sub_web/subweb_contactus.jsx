@@ -1,14 +1,43 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faLocationPin, faEnvelope, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 export default function SubwebContactUs() {
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        category: '',
+        message: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const phoneNumber = "2349060151108";
+        const text = `New Contact Inquiry:\n\n` +
+            `*Name:* ${formData.firstName} ${formData.lastName}\n` +
+            `*Email:* ${formData.email}\n` +
+            `*Phone:* ${formData.phoneNumber}\n` +
+            `*Category:* ${formData.category}\n\n` +
+            `*Message:* ${formData.message}`;
+        
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+        window.open(whatsappUrl, '_blank');
+    };
+
     const list = [
         {
             id: 1,
             icon: faPhone,
             title: "Call Us",
             description: "Mon-fri 9am-6am, sat-sun 9am-4pm",
-            contact: "+234 801 234 5678"
+            contact: "+234 906 015 1108"
         },
         {
             id: 2,
@@ -22,7 +51,7 @@ export default function SubwebContactUs() {
             icon: faLocationPin,
             title: "Visit Us",
             description: "Our office location",
-            contact: "1234 SAREP St, Lagos, Nigeria"
+            contact: "Lagos, Nigeria"
         }
     ]
     return(
@@ -56,29 +85,29 @@ export default function SubwebContactUs() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                         <h1 className="text-4xl font-black font-serif text-gray-800">Send Us a Message</h1>
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10">
                                 <div>
-                                    <label htmlFor="firstname" className="block text-sm font-medium text-gray-700 mb-3">FirstName*</label>
-                                    <input type="text" required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></input>
+                                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-3">FirstName*</label>
+                                    <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></input>
                                 </div>
                                 <div>
-                                    <label htmlFor="lastname" className="block text-sm font-medium text-gray-700 mb-3">LastName*</label>
-                                    <input type="text" required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></input>
+                                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-3">LastName*</label>
+                                    <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></input>
                                 </div>
                             </div>
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3">Email Address*</label>
-                                <textarea  itemType="email" rows={1} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></input>
                             </div>
                             <div>
-                                <label htmlFor="phonenumber" className="block text-sm font-medium text-gray-700 mb-3">Phone Number*</label>
-                                <textarea  itemType="tel" rows={1} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                                <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-3">Phone Number*</label>
+                                <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></input>
                             </div>
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-3">Catefigori*</label>
-                                <select required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors">
-                                    <option value="" disabled selected>Select Subject</option>
+                                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-3">Category*</label>
+                                <select name="category" value={formData.category} onChange={handleInputChange} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors">
+                                    <option value="" disabled>Select Subject</option>
                                     <option value="airbnb">Airbnb rentals</option>
                                     <option value="cars">Car rentals</option>
                                     <option value="realestate">Real Estate</option>
@@ -87,7 +116,7 @@ export default function SubwebContactUs() {
                             </div>
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-3">Message*</label>
-                                <textarea rows={5} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></textarea>
+                                <textarea name="message" value={formData.message} onChange={handleInputChange} rows={5} required className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-brand-gold transition-colors"></textarea>
                             </div>
                             <div>
                                 <button type="submit" className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-sm transition-colors">
@@ -133,4 +162,4 @@ export default function SubwebContactUs() {
             </div>
         </section>
     );
-}
+}

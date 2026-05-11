@@ -165,9 +165,24 @@ export default function ListingDetails() {
                                         </div>
                                     ))}
                                 </div>
-                                <button className="mt-10 w-full bg-black text-white font-bold py-5 rounded-xl hover:bg-yellow-600 transition-all duration-300 shadow-xl active:scale-95">
-                                    Book Now / Inquire
-                                </button>
+                                    <button 
+                                        onClick={() => {
+                                            const phoneNumber = "2349060151108";
+                                            const message = `Hello, I'm interested in this listing:\n\n` +
+                                                `*Item:* ${listing.title}\n` +
+                                                `*Category:* ${listing.category}\n` +
+                                                `*Price:* ${listing.price}${listing.price_unit}\n` +
+                                                `*Location:* ${listing.location}\n\n` +
+                                                `*Image:* ${listing.image}\n\n` +
+                                                `Is this still available?`;
+                                            
+                                            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                                            window.open(whatsappUrl, '_blank');
+                                        }}
+                                        className="mt-10 w-full bg-black text-white font-bold py-5 rounded-xl hover:bg-yellow-600 transition-all duration-300 shadow-xl active:scale-95"
+                                    >
+                                        Book Now / Inquire
+                                    </button>
                             </div>
                         </div>
                     </div>
