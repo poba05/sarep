@@ -18,7 +18,7 @@ export default function AdminPage() {
         gallery: [],
         location: '',
         price: '',
-        priceUnit: '',
+        price_unit: '',
         description: '',
         feature1: '',
         feature2: '',
@@ -117,7 +117,7 @@ export default function AdminPage() {
             gallery: galleryUrls,
             location: formData.location,
             price: formData.price,
-            priceUnit: formData.priceUnit,
+            price_unit: formData.price_unit,
             description: formData.description,
             features
         };
@@ -155,7 +155,7 @@ export default function AdminPage() {
             gallery: [],
             location: '',
             price: '',
-            priceUnit: '',
+            price_unit: '',
             description: '',
             feature1: '',
             feature2: '',
@@ -177,7 +177,7 @@ export default function AdminPage() {
             gallery: listing.gallery || [listing.image],
             location: listing.location,
             price: listing.price,
-            priceUnit: listing.priceUnit,
+            price_unit: listing.price_unit,
             description: listing.description,
             feature1: listing.features && listing.features[0] ? listing.features[0].label : '',
             feature2: listing.features && listing.features[1] ? listing.features[1].label : '',
@@ -352,7 +352,7 @@ export default function AdminPage() {
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700">Price Unit</label>
                                     <div className="mt-1">
-                                        <input type="text" name="priceUnit" required value={formData.priceUnit} onChange={handleInputChange} className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border" placeholder="e.g. /night, /day, /plot" />
+                                        <input type="text" name="price_unit" required value={formData.price_unit} onChange={handleInputChange} className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border" placeholder="e.g. /night, /day, /plot" />
                                     </div>
                                 </div>
 
@@ -439,7 +439,7 @@ export default function AdminPage() {
                                                 </span>
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {listing.price}{listing.priceUnit}
+                                                {listing.price}{listing.price_unit}
                                             </td>
                                             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <button onClick={() => handleEdit(listing)} className="text-indigo-600 hover:text-indigo-900 mr-4">Edit</button>

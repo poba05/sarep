@@ -12,7 +12,7 @@ export const defaultListings = [
         image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         location: 'Victoria Island, Lagos',
         price: '₦85,000',
-        priceUnit: '/night',
+        price_unit: '/night',
         description: 'Experience luxury living in the heart of Victoria Island. This 3-bedroom apartment features modern amenities, a stunning view, and easy access to the city\'s best restaurants and business centers.',
         features: [
             { iconName: 'faBed', label: '3 beds' },
@@ -26,7 +26,7 @@ export const defaultListings = [
         image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         location: '2023 model',
         price: '₦120,000',
-        priceUnit: '/day',
+        price_unit: '/day',
         description: 'Ride in comfort and style with the 2023 Mercedes-Benz S-Class. Perfect for corporate events, weddings, or a luxurious day out in the city.',
         features: [
             { iconName: 'faUsers', label: '5 seats' },
@@ -40,7 +40,7 @@ export const defaultListings = [
         image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
         location: 'Lekki phase 2, Lagos',
         price: '₦25M',
-        priceUnit: '/plot',
+        price_unit: '/plot',
         description: 'Secure your future with this prime estate land in Lekki Phase 2. Featuring a serene environment, tarred roads, and complete documentation including C of O.',
         features: [
             { iconName: 'faRuler', label: '600sqm' },

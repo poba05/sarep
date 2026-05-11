@@ -135,7 +135,7 @@ export default function ListingDetails() {
                                 <p className="text-sm text-gray-500 uppercase tracking-wider font-semibold mb-1">Total Price</p>
                                 <div className="flex items-baseline gap-2">
                                     <span className="text-4xl md:text-5xl font-serif font-bold text-gray-900">{listing.price}</span>
-                                    <span className="text-xl text-gray-500 font-serif">{listing.priceUnit}</span>
+                                    <span className="text-xl text-gray-500 font-serif">{listing.price_unit}</span>
                                 </div>
                             </div>
                         </div>

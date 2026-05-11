@@ -88,7 +88,7 @@ export default function SubwebListings() {
                                 </div>
                                 <div className="ml-auto mt-4 text-lg flex flex-row items-center space-x-2">
                                     <span className="text-black font-serif font-bold text-2xl">{listing.price}</span>
-                                    <span className="text-gray-500 font-serif font-light text-xl">{listing.priceUnit}</span>
+                                    <span className="text-gray-500 font-serif font-light text-xl">{listing.price_unit}</span>
                                 </div>
                                 <div className="grid grid-cols-3 gap-1 mt-4">
                                     {listing.features?.map((feature, idx) => (
