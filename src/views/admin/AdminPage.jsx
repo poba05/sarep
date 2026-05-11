@@ -30,7 +30,17 @@ export default function AdminPage() {
     const [isConfigMissing, setIsConfigMissing] = useState(false);
 
     useEffect(() => {
-        if (!import.meta.env.VITE_SUPABASE_URL || !import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY) {
+        const url = import.meta.env.VITE_SUPABASE_URL;
+        const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+        
+        console.log('Diagnostic - URL exists:', !!url);
+        console.log('Diagnostic - Key exists:', !!key);
+        if (key) {
+            console.log('Diagnostic - Key starts with:', key.substring(0, 5));
+            console.log('Diagnostic - Key length:', key.length);
+        }
+
+        if (!url || !key) {
             setIsConfigMissing(true);
         }
     }, []);
