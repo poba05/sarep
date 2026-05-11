@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  # VITE_SUPABASE_PUBLISHABLE_KEY and VITE_SUPABASE_URL are Supabase anon/public
+  # keys intentionally embedded in the client bundle (VITE_ prefix makes them
+  # public by design). Exempt them from secrets scanning.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SUPABASE_PUBLISHABLE_KEY,VITE_SUPABASE_URL"
